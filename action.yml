@@ -1,0 +1,29 @@
+name: 'Deploy via SSH'
+author: APIdog
+description: 'Deploy build to remote server via SSH and restart pm2-app'
+
+inputs:
+    dist-path:
+        description: 'Path with files'
+        required: true
+    ssh-key:
+        description: 'SSH key'
+        required: true
+    ssh-user:
+        description: 'SSH user'
+        required: true
+    remote-address:
+        description: 'IP or domain of remote'
+        required: true
+    remote-port:
+        description: 'Port of remote'
+        default: 22
+    remote-path:
+        description: 'Path in remote'
+        required: true
+    app-name:
+        description: 'Name of application in pm2 for restart'
+
+runs:
+    using: 'node16'
+    main: 'dist/index.js'
